@@ -1,119 +1,203 @@
-/* ===== Google Font ===== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+/* =======================
+   GOOGLE FONT
+======================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* ===== Reset ===== */
+/* =======================
+   CSS VARIABLES (Theme)
+======================= */
+:root {
+  --bg-dark: #0b132b;
+  --bg-light: #1c2541;
+  --accent: #ff7eb3;
+  --accent-2: #6c63ff;
+  --text-main: #f5f5f5;
+  --text-soft: #cfd8dc;
+  --glass: rgba(255, 255, 255, 0.08);
+  --blur: blur(14px);
+}
+
+/* =======================
+   RESET
+======================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ===== Body ===== */
+/* =======================
+   BODY
+======================= */
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #f5f5f5;
-  line-height: 1.7;
+  background: radial-gradient(circle at top, #1c2541, #0b132b);
+  color: var(--text-main);
+  line-height: 1.8;
   padding: 40px;
+  overflow-x: hidden;
 }
 
-/* ===== Headings ===== */
-h1, h2, h3 {
-  font-weight: 600;
-  letter-spacing: 1px;
+/* =======================
+   PAGE ANIMATION
+======================= */
+body {
+  animation: fadeIn 1.2s ease-in-out;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =======================
+   HEADINGS
+======================= */
 h1 {
-  font-size: 2.8rem;
-  margin-bottom: 10px;
-  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
 }
 
 h2 {
-  margin-top: 40px;
+  margin-top: 45px;
   margin-bottom: 15px;
-  color: #ffb6c1;
+  font-weight: 600;
+  color: var(--accent);
+  position: relative;
 }
 
-/* ===== Paragraph ===== */
+h2::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  bottom: -6px;
+  left: 0;
+  border-radius: 10px;
+}
+
+/* =======================
+   TEXT
+======================= */
 p {
+  color: var(--text-soft);
+  max-width: 750px;
   font-size: 1rem;
-  color: #e0e0e0;
-  max-width: 700px;
 }
 
-/* ===== Horizontal Line ===== */
-hr {
-  border: none;
-  height: 1px;
-  background: linear-gradient(to right, transparent, #ff7eb3, transparent);
-  margin: 30px 0;
+/* =======================
+   GLASS SECTIONS
+======================= */
+section {
+  margin: 50px 0;
+  padding: 30px;
+  background: var(--glass);
+  backdrop-filter: var(--blur);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease;
 }
 
-/* ===== Links ===== */
+section:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* =======================
+   LINKS
+======================= */
 a {
-  color: #ff7eb3;
+  color: var(--accent);
   text-decoration: none;
   position: relative;
+  font-weight: 500;
 }
 
 a::after {
   content: "";
   position: absolute;
-  width: 0;
+  width: 0%;
   height: 2px;
-  background: #ff7eb3;
   left: 0;
   bottom: -4px;
-  transition: 0.3s;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: 0.3s ease;
 }
 
 a:hover::after {
   width: 100%;
 }
 
-/* ===== Sections ===== */
-section {
-  margin-bottom: 50px;
-  padding: 25px;
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
+/* =======================
+   HR
+======================= */
+hr {
+  border: none;
+  height: 1px;
+  margin: 40px 0;
+  background: linear-gradient(to right, transparent, var(--accent), transparent);
 }
 
-section:hover {
-  transform: translateY(-5px);
-}
-
-/* ===== Contact Info ===== */
+/* =======================
+   CONTACT SECTION
+======================= */
 .contact p {
-  margin-bottom: 8px;
+  margin: 8px 0;
+  font-size: 0.95rem;
 }
 
-/* ===== Footer ===== */
+/* =======================
+   FOOTER
+======================= */
 footer {
-  margin-top: 60px;
   text-align: center;
-  font-size: 0.9rem;
-  color: #cfcfcf;
-  opacity: 0.8;
+  margin-top: 70px;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  opacity: 0.7;
 }
 
-/* ===== Responsive ===== */
+/* =======================
+   SCROLLBAR (Chrome)
+======================= */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b132b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--accent), var(--accent-2));
+  border-radius: 10px;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
 @media (max-width: 768px) {
   body {
     padding: 20px;
   }
 
   h1 {
-    font-size: 2.2rem;
+    font-size: 2.3rem;
   }
 
   section {
-    padding: 20px;
+    padding: 22px;
   }
 }
